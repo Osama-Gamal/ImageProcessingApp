@@ -53,64 +53,70 @@ class Ui(QtWidgets.QMainWindow):
     def loadImgFunc(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
                                             "Images (*.png *.jpeg *.jpg)")
-        print(image)
-        global imagePath
-        imagePath = image[0]
-        if imagePath is not None:
-            pixmap = QPixmap(imagePath)
-            global originalImage,pil_image
-            originalImage = cv2.imread(imagePath, cv2.IMREAD_UNCHANGED)
-            pil_image = Image.open(imagePath)
-            self.imagePathTxt.setText(imagePath)
-            self.mainImage.setPixmap(self.convertcvImgToQtImg(originalImage))
-            self.mainImage.setScaledContents(1)
+        if len(image[0]) != 0:
+            print(image)
+            global imagePath
+            imagePath = image[0]
+            if imagePath is not None:
+                pixmap = QPixmap(imagePath)
+                global originalImage,pil_image
+                originalImage = cv2.imread(imagePath, cv2.IMREAD_UNCHANGED)
+                pil_image = Image.open(imagePath)
+                self.imagePathTxt.setText(imagePath)
+                self.mainImage.setPixmap(self.convertcvImgToQtImg(originalImage))
+                self.mainImage.setScaledContents(1)
 
 
     def additionImage(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
                                             "Images (*.png *.jpeg *.jpg)")
-        SecondimagePath = image[0]
-        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
-        # هنا انا لازم اعمل تغيير لحجم الصوره التانيه علشان اقدر اطيق مفهوم الاضافه لان الصورتين لازم يكونوا نفس الحجم
-        dimensions = (originalImage.shape[1],originalImage.shape[0])
-        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
-        weightedSum = cv2.addWeighted(originalImage, 0.5, Secondimage, 0.4, 0)
-        self.processedImage.setPixmap(self.convertcvImgToQtImg(weightedSum))
-        self.processedImage.setScaledContents(1)
+
+        if len(image[0]) != 0:
+            SecondimagePath = image[0]
+            Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+            # هنا انا لازم اعمل تغيير لحجم الصوره التانيه علشان اقدر اطيق مفهوم الاضافه لان الصورتين لازم يكونوا نفس الحجم
+            dimensions = (originalImage.shape[1],originalImage.shape[0])
+            Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+            weightedSum = cv2.addWeighted(originalImage, 0.5, Secondimage, 0.4, 0)
+            self.processedImage.setPixmap(self.convertcvImgToQtImg(weightedSum))
+            self.processedImage.setScaledContents(1)
 
     def subtractImage(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
                                             "Images (*.png *.jpeg *.jpg)")
-        SecondimagePath = image[0]
-        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
-        # هنا انا لازم اعمل تغيير لحجم الصوره التانيه علشان اقدر اطيق مفهوم الاضافه لان الصورتين لازم يكونوا نفس الحجم
-        dimensions = (originalImage.shape[1], originalImage.shape[0])
-        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
-        sub = cv2.subtract(originalImage, Secondimage)
-        self.processedImage.setPixmap(self.convertcvImgToQtImg(sub))
-        self.processedImage.setScaledContents(1)
+        if len(image[0]) != 0:
+            SecondimagePath = image[0]
+            Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+            # هنا انا لازم اعمل تغيير لحجم الصوره التانيه علشان اقدر اطيق مفهوم الاضافه لان الصورتين لازم يكونوا نفس الحجم
+            dimensions = (originalImage.shape[1], originalImage.shape[0])
+            Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+            sub = cv2.subtract(originalImage, Secondimage)
+            self.processedImage.setPixmap(self.convertcvImgToQtImg(sub))
+            self.processedImage.setScaledContents(1)
 
     def bitWiseAndImage(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
                                             "Images (*.png *.jpeg *.jpg)")
-        SecondimagePath = image[0]
-        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
-        dimensions = (originalImage.shape[1], originalImage.shape[0])
-        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
-        bitwiseAnd = cv2.bitwise_and(originalImage, Secondimage)
-        self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseAnd))
-        self.processedImage.setScaledContents(1)
+        if len(image[0]) != 0:
+            SecondimagePath = image[0]
+            Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+            dimensions = (originalImage.shape[1], originalImage.shape[0])
+            Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+            bitwiseAnd = cv2.bitwise_and(originalImage, Secondimage)
+            self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseAnd))
+            self.processedImage.setScaledContents(1)
 
     def bitWiseXorImage(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
                                             "Images (*.png *.jpeg *.jpg)")
-        SecondimagePath = image[0]
-        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
-        dimensions = (originalImage.shape[1], originalImage.shape[0])
-        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
-        bitwiseXor = cv2.bitwise_xor(originalImage, Secondimage)
-        self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseXor))
-        self.processedImage.setScaledContents(1)
+        if len(image[0]) != 0:
+            SecondimagePath = image[0]
+            Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+            dimensions = (originalImage.shape[1], originalImage.shape[0])
+            Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+            bitwiseXor = cv2.bitwise_xor(originalImage, Secondimage)
+            self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseXor))
+            self.processedImage.setScaledContents(1)
 
     def bitWiseNotImage(self):
         bitwiseNot = cv2.bitwise_not(originalImage)
@@ -130,14 +136,15 @@ class Ui(QtWidgets.QMainWindow):
     def histogramMatching(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
                                             "Images (*.png *.jpeg *.jpg)")
-        SecondimagePath = image[0]
-        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
-        dimensions = (originalImage.shape[1], originalImage.shape[0])
-        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
-        multi = True if Secondimage.shape[-1] > 1 else False
-        matched = exposure.match_histograms(originalImage, Secondimage, multichannel=multi)
-        self.processedImage.setPixmap(self.convertcvImgToQtImg(matched))
-        self.processedImage.setScaledContents(1)
+        if len(image[0]) != 0:
+            SecondimagePath = image[0]
+            Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+            dimensions = (originalImage.shape[1], originalImage.shape[0])
+            Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+            multi = True if Secondimage.shape[-1] > 1 else False
+            matched = exposure.match_histograms(originalImage, Secondimage, multichannel=multi)
+            self.processedImage.setPixmap(self.convertcvImgToQtImg(matched))
+            self.processedImage.setScaledContents(1)
 
     def histogramEqualization(self):
         src = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
