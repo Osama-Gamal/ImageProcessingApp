@@ -30,11 +30,17 @@
    <widget class="QLabel" name="mainImage">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>60</y>
       <width>361</width>
       <height>241</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="text">
      <string>Main Image</string>
@@ -42,12 +48,15 @@
     <property name="scaledContents">
      <bool>true</bool>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>10</y>
+      <x>130</x>
+      <y>20</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -64,11 +73,17 @@
    <widget class="QLabel" name="processedImage">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>370</y>
       <width>361</width>
       <height>241</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="text">
      <string>Processed Image</string>
@@ -76,13 +91,16 @@
     <property name="scaledContents">
      <bool>false</bool>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>10</y>
-      <width>421</width>
+      <width>401</width>
       <height>611</height>
      </rect>
     </property>
@@ -93,7 +111,7 @@
      <bool>false</bool>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Panel</enum>
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
@@ -101,7 +119,7 @@
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>100</x>
        <y>310</y>
        <width>231</width>
        <height>31</height>
