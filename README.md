@@ -4,7 +4,8 @@ Create a software with GUI to apply some image processing algorithms with openCV
 
 (**Add noise**, **Median**, **Robert Borders**, **Sobel**, **Average**, **ming&max filter**,
  **Laplacien**, **Butter Low&High**, **Gaussian**, **Fourier**, **Gray Level**, **Negative Image**,
- **Thresholding**, **PowerLaw**, **Log Transform**, **Contrast Stretching**, **Histgoram**, **Resize**, **Save&Load**)
+ **Thresholding**, **PowerLaw**, **Log Transform**, **Contrast Stretching**, **Histgoram**, **Resize**, **Save&Load**, **Addition**, 
+ **Subtract**, **BitwiseAND**, **BitwiseXOR**, **BitwiseNOT**, **ExtractRegion**, **Histogram Matching**, **Histogram Equalization**)
 
 **Here is preview**
 
