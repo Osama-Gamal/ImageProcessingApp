@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="printButton">
+   <widget class="QPushButton" name="loadImgBtn">
     <property name="geometry">
      <rect>
       <x>780</x>
@@ -172,7 +172,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>100</y>
+      <y>90</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -185,7 +185,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>100</y>
+      <y>90</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -210,7 +210,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>100</y>
+      <y>90</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -232,7 +232,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>100</y>
+      <y>90</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -245,7 +245,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>150</y>
+      <y>120</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -258,7 +258,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>150</y>
+      <y>120</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -298,8 +298,8 @@
    <widget class="QPushButton" name="SobelBtn">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>150</y>
+      <x>430</x>
+      <y>120</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -312,7 +312,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>150</y>
+      <y>120</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -325,7 +325,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>200</y>
+      <y>170</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -353,7 +353,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>200</y>
+      <y>170</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -366,7 +366,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>180</y>
+      <y>150</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -379,7 +379,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>200</y>
+      <y>170</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -407,7 +407,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>180</y>
+      <y>150</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -420,7 +420,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>250</y>
+      <y>220</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -433,7 +433,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>250</y>
+      <y>220</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -461,7 +461,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>230</y>
+      <y>200</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -474,7 +474,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>250</y>
+      <y>220</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -502,7 +502,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>230</y>
+      <y>200</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -515,7 +515,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>300</y>
+      <y>270</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -543,7 +543,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>280</y>
+      <y>250</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -556,7 +556,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>280</y>
+      <y>250</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -569,7 +569,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>300</y>
+      <y>270</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -582,7 +582,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>300</y>
+      <y>270</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -610,7 +610,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>340</y>
+      <y>360</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -623,7 +623,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>340</y>
+      <y>360</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -650,21 +650,21 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>340</y>
-      <width>141</width>
+      <x>500</x>
+      <y>370</y>
+      <width>151</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Magnitude Spectrum</string>
+     <string>Magnitude Spectrum ==&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="grayBtn">
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>380</y>
+      <y>390</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -677,8 +677,8 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>380</y>
-      <width>111</width>
+      <y>390</y>
+      <width>112</width>
       <height>31</height>
      </rect>
     </property>
@@ -705,7 +705,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>380</y>
+      <y>390</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -717,8 +717,8 @@
    <widget class="QPushButton" name="ThresholdingBtn">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>380</y>
+      <x>430</x>
+      <y>390</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -879,8 +879,8 @@
    <widget class="QPushButton" name="HistgoramBtn">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>470</y>
+      <x>430</x>
+      <y>430</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -894,7 +894,7 @@
      <rect>
       <x>560</x>
       <y>520</y>
-      <width>100</width>
+      <width>107</width>
       <height>31</height>
      </rect>
     </property>
@@ -948,7 +948,7 @@
      <rect>
       <x>667</x>
       <y>520</y>
-      <width>105</width>
+      <width>107</width>
       <height>31</height>
      </rect>
     </property>
@@ -997,8 +997,138 @@
      <string>Save</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="BinaryBtn">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>300</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Binary</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rgbBTn">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>300</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RGB</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="additionBtn">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>300</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Addition</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="subtractBtn">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>270</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Subtract</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="andBtn">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>330</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bitwise And</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="xorBtn">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>330</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bitwise XOR</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="notBtn">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>330</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bitwise NOT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cropBtn">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>300</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Crop Image</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="matchingBtn">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>220</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Histogram matching</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="equalizationBtn">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>170</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Histogram Equalization</string>
+    </property>
+   </widget>
    <zorder>frame</zorder>
-   <zorder>printButton</zorder>
+   <zorder>loadImgBtn</zorder>
    <zorder>mainImage</zorder>
    <zorder>label</zorder>
    <zorder>processedImage</zorder>
@@ -1051,11 +1181,21 @@
    <zorder>heightInput</zorder>
    <zorder>label_13</zorder>
    <zorder>saveBtn</zorder>
+   <zorder>BinaryBtn</zorder>
+   <zorder>rgbBTn</zorder>
+   <zorder>additionBtn</zorder>
+   <zorder>subtractBtn</zorder>
+   <zorder>andBtn</zorder>
+   <zorder>xorBtn</zorder>
+   <zorder>notBtn</zorder>
+   <zorder>cropBtn</zorder>
+   <zorder>matchingBtn</zorder>
+   <zorder>equalizationBtn</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>printButton</tabstop>
+  <tabstop>loadImgBtn</tabstop>
  </tabstops>
  <resources/>
  <connections/>

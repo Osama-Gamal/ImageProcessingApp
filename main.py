@@ -6,6 +6,7 @@ from PyQt5.QtGui import QPixmap, QImage, QColor
 from PyQt5.QtWidgets import QFileDialog, QPushButton
 import cv2
 from PIL import Image, ImageFilter
+from skimage import exposure
 from skimage.util import random_noise
 from scipy import ndimage
 from matplotlib import pyplot as plt, cm
@@ -15,8 +16,7 @@ class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
         uic.loadUi('mainWindow.ui', self)
-        self.button = self.findChild(QtWidgets.QPushButton, 'printButton')
-        self.button.clicked.connect(self.printButtonPressed)
+        self.loadImgBtn.clicked.connect(self.loadImgFunc)
         self.medianBtn.clicked.connect(self.medianProcess)
         self.minFilterBtn.clicked.connect(self.minFilterProcess)
         self.maxFilterBtn.clicked.connect(self.maxFilterProcess)
@@ -36,13 +36,23 @@ class Ui(QtWidgets.QMainWindow):
         self.contrastBtn.clicked.connect(self.contrastStretching)
         self.HistgoramBtn.clicked.connect(self.histgoram)
         self.resizeBtn.clicked.connect(self.resizeProcess)
+        self.BinaryBtn.clicked.connect(self.convertToBinary)
+        self.rgbBTn.clicked.connect(self.convertToRGB)
+        self.additionBtn.clicked.connect(self.additionImage)
+        self.subtractBtn.clicked.connect(self.subtractImage)
+        self.andBtn.clicked.connect(self.bitWiseAndImage)
+        self.xorBtn.clicked.connect(self.bitWiseXorImage)
+        self.notBtn.clicked.connect(self.bitWiseNotImage)
+        self.cropBtn.clicked.connect(self.extractRegionImage)
+        self.matchingBtn.clicked.connect(self.histogramMatching)
+        self.equalizationBtn.clicked.connect(self.histogramEqualization)
         self.saveBtn.clicked.connect(self.saveImg)
         self.show()
 
 
-    def printButtonPressed(self):
+    def loadImgFunc(self):
         image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
-                                            "Image file(*.jpg)")
+                                            "Images (*.png *.jpeg *.jpg)")
         print(image)
         global imagePath
         imagePath = image[0]
@@ -56,6 +66,84 @@ class Ui(QtWidgets.QMainWindow):
             self.mainImage.setScaledContents(1)
 
 
+    def additionImage(self):
+        image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
+                                            "Images (*.png *.jpeg *.jpg)")
+        SecondimagePath = image[0]
+        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+        # هنا انا لازم اعمل تغيير لحجم الصوره التانيه علشان اقدر اطيق مفهوم الاضافه لان الصورتين لازم يكونوا نفس الحجم
+        dimensions = (originalImage.shape[1],originalImage.shape[0])
+        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+        weightedSum = cv2.addWeighted(originalImage, 0.5, Secondimage, 0.4, 0)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(weightedSum))
+        self.processedImage.setScaledContents(1)
+
+    def subtractImage(self):
+        image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
+                                            "Images (*.png *.jpeg *.jpg)")
+        SecondimagePath = image[0]
+        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+        # هنا انا لازم اعمل تغيير لحجم الصوره التانيه علشان اقدر اطيق مفهوم الاضافه لان الصورتين لازم يكونوا نفس الحجم
+        dimensions = (originalImage.shape[1], originalImage.shape[0])
+        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+        sub = cv2.subtract(originalImage, Secondimage)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(sub))
+        self.processedImage.setScaledContents(1)
+
+    def bitWiseAndImage(self):
+        image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
+                                            "Images (*.png *.jpeg *.jpg)")
+        SecondimagePath = image[0]
+        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+        dimensions = (originalImage.shape[1], originalImage.shape[0])
+        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+        bitwiseAnd = cv2.bitwise_and(originalImage, Secondimage)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseAnd))
+        self.processedImage.setScaledContents(1)
+
+    def bitWiseXorImage(self):
+        image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
+                                            "Images (*.png *.jpeg *.jpg)")
+        SecondimagePath = image[0]
+        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+        dimensions = (originalImage.shape[1], originalImage.shape[0])
+        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+        bitwiseXor = cv2.bitwise_xor(originalImage, Secondimage)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseXor))
+        self.processedImage.setScaledContents(1)
+
+    def bitWiseNotImage(self):
+        bitwiseNot = cv2.bitwise_not(originalImage)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(bitwiseNot))
+        self.processedImage.setScaledContents(1)
+
+    def extractRegionImage(self):
+        blank = np.zeros(originalImage.shape[:2], dtype='uint8')
+        #بجيب حجم الصوره الاصليه في الطول والعرض علشان لما اعمل الدايره كماسك اخلي الاحداثيات في النص بالظبط
+        center_coordinates = (int(originalImage.shape[1]/2), int(originalImage.shape[0]/2))
+        radius = 350
+        mask = cv2.circle(blank, center_coordinates, radius, 255, -1)
+        masked = cv2.bitwise_and(originalImage, originalImage, mask=mask)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(masked))
+        self.processedImage.setScaledContents(1)
+
+    def histogramMatching(self):
+        image = QFileDialog.getOpenFileName(None, 'OpenFile', '/home/',
+                                            "Images (*.png *.jpeg *.jpg)")
+        SecondimagePath = image[0]
+        Secondimage = cv2.imread(SecondimagePath, cv2.IMREAD_UNCHANGED)
+        dimensions = (originalImage.shape[1], originalImage.shape[0])
+        Secondimage = cv2.resize(Secondimage, dimensions, interpolation=cv2.INTER_AREA)
+        multi = True if Secondimage.shape[-1] > 1 else False
+        matched = exposure.match_histograms(originalImage, Secondimage, multichannel=multi)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(matched))
+        self.processedImage.setScaledContents(1)
+
+    def histogramEqualization(self):
+        src = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
+        dst = cv2.equalizeHist(src)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(dst))
+        self.processedImage.setScaledContents(1)
     def medianProcess(self):
         median = cv2.medianBlur(originalImage, int(self.medianValBox.value()))
         self.processedImage.setPixmap(self.convertcvImgToQtImg(median))
@@ -130,6 +218,15 @@ class Ui(QtWidgets.QMainWindow):
         self.processedImage.setPixmap(self.convertcvImgToQtImg(H))
         self.processedImage.setScaledContents(1)
 
+    def convertToBinary(self):
+        gray = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
+        ret, thresh = cv2.threshold(gray, 170, 255, 0)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(thresh))
+        self.processedImage.setScaledContents(1)
+    def convertToRGB(self):
+        image_rgb = cv2.cvtColor(originalImage, cv2.COLOR_BGR2RGB)
+        self.processedImage.setPixmap(self.convertcvImgToQtImg(image_rgb))
+        self.processedImage.setScaledContents(1)
 
     def gaussain(self):
         dst = cv2.GaussianBlur(originalImage, (int(self.uguassianInput.value()), int(self.vguassianInput.value())), cv2.BORDER_DEFAULT)
