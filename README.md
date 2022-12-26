@@ -7,6 +7,11 @@ Create a software with GUI to apply some image processing algorithms with openCV
  **Thresholding**, **PowerLaw**, **Log Transform**, **Contrast Stretching**, **Histgoram**, **Resize**, **Save&Load**, **Addition**, 
  **Subtract**, **BitwiseAND**, **BitwiseXOR**, **BitwiseNOT**, **ExtractRegion**, **Histogram Matching**, **Histogram Equalization**)
 
+
+**How to Run The Project :-**
+https://youtu.be/-wkgxTz8S3s
+
+
 **Here is preview**
 
 ![Screenshot_214](https://user-images.githubusercontent.com/97878002/209472548-7b5ebf2e-22cb-46c7-b2f5-8c37149b5909.png)
